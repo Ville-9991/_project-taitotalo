@@ -1,0 +1,25 @@
+body{
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.weather_root{
+    background: linear-gradient(#1a3cdb, #51b5e8);
+    height: 100vh;
+}
+
+.weather_summary_field{
+    /* keskittää elementit */
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    
+    border-style: groove;
+    border-radius: 10px;
+
+    /* kehyksen liukuväri */
+    border: solid transparent;
+    border-image: linear-gradient(145deg, #1a3cdb, #51b5e8);
+    border-image-slice: 1;
+}

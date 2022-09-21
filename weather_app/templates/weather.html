@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Document</title>
+{% endblock %}
+
+{% block body %}
+<div class="weather_root">
+    <div class="weather_summary_field">
+        <h2 class="city_name">Hyvinkää</h2>
+        <div class="search_field">
+            <input type="text" placeholder="Hae kaupunkia...">
+        </div>
+        <div class="weather_details">
+            <div class="current_weather">
+                <img src="../static/img/placeholder_weather_img.png" alt="placeholder">
+                <h1 class="temperature">16°C</h1>
+                <h2 class="weather_name">Puolipilvistä</h2>
+            </div>
+            <div class="lined_details_container">
+                <span class="current_wind">Tuuli: 6,4 m/s</span>
+                <span class="current_humidity">Kosteus: 72 %</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
