@@ -1,4 +1,8 @@
 from flask import Flask, render_template
+# from weather_handler import Weather # oma file, joka hakee tarvittavat sää tiedot käyttäjän syötteen mukaan
+
+# fetched_weather = Weather("Hyvinkää").fetchWeather()
+# print(fetched_weather)
 
 app = Flask(__name__)
 
