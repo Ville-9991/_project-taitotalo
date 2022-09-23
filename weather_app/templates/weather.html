@@ -5,22 +5,24 @@
 {% endblock %}
 
 {% block body %}
-<div class="weather_root">
-    <div class="weather_summary_field">
-        <h2 class="city_name">Hyvinkää</h2>
-        <div class="search_field">
-            <input type="text" placeholder="Hae kaupunkia...">
+<div id="weather_root">
+    <div id="weather_summary_field_container">
+        <div id="weather_upper_part_container">
+            <h2 id="city_name">Hyvinkää</h2>
+            <span id="weather_search_field">
+                <input type="text" placeholder="Hae kaupunkia...">
+            </span>
         </div>
-        <div class="weather_details">
-            <div class="current_weather">
-                <img src="../static/img/placeholder_weather_img.png" alt="placeholder">
-                <h1 class="temperature">16°C</h1>
-                <h2 class="weather_name">Puolipilvistä</h2>
+        <div id="weather_middle_part_container">
+            <img id="weather_img" src="../static/img/placeholder_weather_img.png" alt="placeholder">
+            <div id="weather_details">
+                <h1 id="current_temperature">16°C</h1>
+                <h2 id="current_weather_name">Puolipilvistä</h2>
             </div>
-            <div class="lined_details_container">
-                <span class="current_wind">Tuuli: 6,4 m/s</span>
-                <span class="current_humidity">Kosteus: 72 %</span>
-            </div>
+        </div>
+        <div id="weather_bottom_part_container">
+            <span id="current_wind">Tuuli: 6,4 m/s</span>
+            <span id="current_humidity">Kosteus: 72 %</span>
         </div>
     </div>
 </div>
