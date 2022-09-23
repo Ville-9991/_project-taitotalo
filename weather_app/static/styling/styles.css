@@ -2,7 +2,11 @@ body{
     font-family: Helvetica, Arial, sans-serif;
 }
 
-/* weather-sivu */
+/* 
+
+### weather-sivu ###
+
+*/
 
 #weather_root{
     background: linear-gradient(#1a3cdb, #51b5e8);
@@ -29,6 +33,7 @@ body{
 }
 
 #weather_search_field input[type=text]{
+    /* weather-hakukenttä */
     border-radius: 30px;
     height: 30px;
     border: 3px solid #51b5e8;
@@ -38,6 +43,7 @@ body{
 }
 
 #weather_search_field ::placeholder{
+    /* hakukentän placeholder teksti */
     color: whitesmoke;
     font-size: large;
     padding-left: 10px;
