@@ -16,7 +16,7 @@ class Weather:
 
     def fetchWeather(self):
 
-        unit = "metric" # halutaan hakea mieluiten celcius-asteita, tyhjä tuo kelviniä
+        unit = "metric" # halutaan hakea mieluiten celsius-asteita, tyhjä tuo kelviniä
         api_key = "44f84fe26e6724a76dc61a818494e3c5" # api-avain on pakollinen (TODO nouda erillisestä tiedostosta)
         URL = "https://api.openweathermap.org/data/2.5/weather"
 

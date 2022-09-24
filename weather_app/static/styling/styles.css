@@ -32,7 +32,7 @@ body{
     display: inline;
 }
 
-#weather_search_field input[type=text]{
+#weather_search_root input[type=text]{
     /* weather-hakukenttä */
     border-radius: 30px;
     height: 30px;
@@ -42,7 +42,7 @@ body{
     font-size: large;
 }
 
-#weather_search_field ::placeholder{
+#weather_search_root ::placeholder{
     /* hakukentän placeholder teksti */
     color: whitesmoke;
     font-size: large;
