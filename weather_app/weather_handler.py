@@ -6,7 +6,7 @@ class Weather:
 
     Ottaa vastaan kaupungin nimen -> 
     palauttaa tuple:n, jonka arvot ovat: nimi (kaupungin), iconi (noudetun tiedoston nimi), 
-    lämpötila (celcius), säätiedon kuvaus, tuulennoepus, ilmankosteus
+    lämpötila (celsius), säätiedon kuvaus, tuulennoepus, ilmankosteus
     """
 
     # open weather api docs: https://openweathermap.org/current
