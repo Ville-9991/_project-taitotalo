@@ -13,11 +13,15 @@ def weather_page():
 
 @app.route("/weather/<string:city_name>", methods=["POST"])
 def process_weather(city_name):
-    name = city_name
-    print(type(name))
+    name = city_name # js:sstä saatu kaupungin nimi
 
-    # fetched_weather = Weather(name).fetchWeather()
-    return "City Name Received Successfully"
+    # täällä hetkellä ei tiedetä parempaa keinoa välittää tuple:a js:lle kuin
+    # sen muunttaminen stringiksi ja palauttaminen flaksin avulla (hyväksyy vain str)
+    fetched_weather = " ".join(map(str, Weather(name).fetchWeather()))
+    # TODO vielä ottaa vastaan mitä vain käyttäjä syöttää, mikä voi aihettaa ongelmia API:lta noudetaessa
+    # luo virheen hallinta siltä varalta
+
+    return fetched_weather
 
 if __name__ == "__main__":
     app.run(debug=True)
