@@ -12,16 +12,19 @@ def weather_page():
     return render_template("weather.html")
 
 @app.route("/weather/<string:city_name>", methods=["POST"])
-def process_weather(city_name):
-    name = city_name # js:sstä saatu kaupungin nimi
+def process_weather(city_name): # js:sstä saatu kaupungin nimi
 
-    # täällä hetkellä ei tiedetä parempaa keinoa välittää tuple:a js:lle kuin
-    # sen muunttaminen stringiksi ja palauttaminen flaksin avulla (hyväksyy vain str)
-    fetched_weather = " ".join(map(str, Weather(name).fetchWeather()))
-    # TODO vielä ottaa vastaan mitä vain käyttäjä syöttää, mikä voi aihettaa ongelmia API:lta noudetaessa
-    # luo virheen hallinta siltä varalta
+    if str(city_name).isnumeric(): # client voi antaa numeron, jota ei voida käsitellä, 
+        return "400"               # joten palautetaan heti bad request 400
 
-    return fetched_weather
+    response_to_client = Weather(city_name).fetchWeather()
+    
+    if not str(response_to_client).isnumeric(): # normaalisti pitäisi tulla json-muotoon muunnettu tuple, 
+        return response_to_client               # jossa on noudetut säätiedot, jotka sitten palautetaan
+         
+    else:
+        # voi kuitenkin olla että Weather.fetchWeather() palauttaa HTTP-virhekoodia
+        return str(response_to_client)
 
 if __name__ == "__main__":
     app.run(debug=True)
