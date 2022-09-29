@@ -1,5 +1,6 @@
 body{
     font-family: Helvetica, Arial, sans-serif;
+    margin: 0;
 }
 
 /* 
@@ -11,16 +12,15 @@ body{
 #weather_root{
     background: linear-gradient(#1a3cdb, #51b5e8);
     height: 100vh;
+    display: flex;
+    justify-content: center;
 }
 
 #weather_summary_field_container{
-    color:whitesmoke;
 
-    /* keskittää elementit */
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin-top: 30%;
+
+    color:whitesmoke;
 
     /* kehyksen liukuväri */
     border: solid transparent;
@@ -51,4 +51,18 @@ body{
 
 #weather_details{
     display: inline-block;
+}
+
+#results_not_found_container{
+    display: none;
+    justify-content: center;
+    color: whitesmoke;
+    height: 30px;
+    border-bottom-left-radius: 30px;
+    background-color: #222326;
+
+}
+
+#results_not_found_tag{
+    margin-top: 5px;
 }

@@ -1,38 +1,51 @@
 function searchWeather(){
     let city_name = document.querySelector("#weather_search_field").value; // käyttäjän syöttämä kaupungin nimi
 
-    const res = new XMLHttpRequest();
-    res.open("POST", `/weather/${city_name}`); // valmistellaan säätietojen pyyntöä serveriltä kaupungin nimen mukaan
+    if (String(city_name).length === 0){ // ensimmäisenä katsotaan onko käyttäjän syöte tyhjä, ennen kuin edes tehdään pyyntöä serveriltä
+        console.log("Tyhjä")
+    }
 
-    res.send(); // laitetaan pyyntö serverille
+    else{ // ...ei ollut tyhjä
 
-    res.onload = () => { // pyyntö tuli vastaan, tehdään seuraavaa...
-        const received_response = res.responseText; // serveriltä saatu vastaus
+        const res = new XMLHttpRequest();
+        res.open("POST", `/weather/${city_name}`); // valmistellaan säätietojen pyyntöä serveriltä kaupungin nimen mukaan
 
-        if (!isNaN(received_response)){ // tuliko serveriltä virhe koodia?
-            console.log(received_response);
-        }
+        res.send(); // laitetaan pyyntö serverille
 
-        else{ // ei tullut, joten voidaan tuoda säätiedot näkyviin
+        res.onload = () => { // pyyntö tuli vastaan, tehdään seuraavaa...
+            const received_response = res.responseText; // serveriltä saatu vastaus
 
-            // serveri palauttaa noudetun sää-datan json-muodossa,
-            // joka sitten muunnetaan listaksi
-            let weather_data = JSON.parse(received_response);
+            if (!isNaN(received_response)){ // tuliko serveriltä virhe koodia?
 
-            // weather.html id nimiä
-            const IDs = ["city_name", "weather_img", "current_temperature", "current_weather_name", "current_wind", "current_humidity"];
-            let index = 0;
-            for (let id_name of IDs){ // noutaa tagin id:n ja korvaa html -tagien arvot weather_datan mukaan
+                // "tuloksia ei löytynyt" näkyviin
+                document.querySelector("#results_not_found_container").style.display = "flex";
+            }
 
-                document.querySelector("#"+id_name).textContent = weather_data[index];
+            else{ // ei tullut, joten voidaan tuoda säätiedot näkyviin
 
-                if (id_name == "weather_img"){
-                    document.querySelector("#"+id_name).src = `http://openweathermap.org/img/wn/${weather_data[index]}@2x.png`;
+                // serveri palauttaa noudetun sää-datan json-muodossa,
+                // joka sitten muunnetaan listaksi
+                let weather_data = JSON.parse(received_response);
+
+                // weather.html id nimiä
+                const IDs = ["city_name", "weather_img", "current_temperature", "current_weather_name", "current_wind", "current_humidity"];
+                let index = 0;
+                for (let id_name of IDs){ // noutaa tagin id:n ja korvaa html -tagien arvot weather_datan mukaan
+
+                    document.querySelector("#"+id_name).textContent = weather_data[index];
+
+                    if (id_name == "weather_img"){ // kuvakkeen kohdalla noudetaan datan mukana tulleen nimen mukainen kuvake
+                        document.querySelector("#"+id_name).src = `http://openweathermap.org/img/wn/${weather_data[index]}@2x.png`;
+                    }
+                    else if (id_name == "current_temperature"){
+                        document.querySelector("#"+id_name).textContent = weather_data[index] + " °C";
+                    }
+                    index++;
                 }
-                else if (id_name == "current_temperature"){
-                    document.querySelector("#"+id_name).textContent = weather_data[index] + " °C";
-                }
-                index++;
+
+                // "tuloksia ei löytynyt" piiloon
+                document.querySelector("#results_not_found_container").style.display = "none";
+
             }
 
         }
