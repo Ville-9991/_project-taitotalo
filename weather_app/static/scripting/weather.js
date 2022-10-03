@@ -17,7 +17,7 @@ function searchWeather(){
 
             if (!isNaN(received_response)){ // tuliko serveriltä virhe koodia?
 
-                // "tuloksia ei löytynyt" näkyviin
+                // "tuloksia ei löytynyt" kohta näkyviin
                 document.querySelector("#results_not_found_container").style.display = "flex";
             }
 
@@ -34,8 +34,8 @@ function searchWeather(){
 
                     document.querySelector("#"+id_name).textContent = weather_data[index];
 
-                    if (id_name == "weather_img"){ // kuvakkeen kohdalla noudetaan datan mukana tulleen nimen mukainen kuvake
-                        document.querySelector("#"+id_name).src = `http://openweathermap.org/img/wn/${weather_data[index]}@2x.png`;
+                    if (id_name == "weather_img"){ // kuvakkeen kohdalla noudetaan datan mukana tulleen lähteen mukainen kuvake
+                        document.querySelector("#"+id_name).src = weather_data[index];
                     }
                     else if (id_name == "current_temperature"){
                         document.querySelector("#"+id_name).textContent = weather_data[index] + " °C";
@@ -43,7 +43,7 @@ function searchWeather(){
                     index++;
                 }
 
-                // "tuloksia ei löytynyt" piiloon
+                // "tuloksia ei löytynyt" kohta piiloon
                 document.querySelector("#results_not_found_container").style.display = "none";
 
             }

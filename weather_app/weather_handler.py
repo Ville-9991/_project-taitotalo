@@ -49,6 +49,8 @@ class Weather:
             wind_speed = fetched_data["wind"]["speed"]
             humidity = fetched_data["main"]["humidity"]
 
-            required_data = (name, icon, temperature, description, wind_speed, humidity)
+            img_source = f"../static/img/wth/{icon}.png"
+
+            required_data = (name, img_source, temperature, description, wind_speed, humidity)
 
             return json.dumps(required_data)
