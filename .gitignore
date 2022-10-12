@@ -2,3 +2,4 @@ env/
 planning/
 __pycache__/
 todo.txt
+_temp/

@@ -2,7 +2,7 @@ function searchWeather(){
     let city_name = document.querySelector("#weather_search_field").value; // käyttäjän syöttämä kaupungin nimi
 
     if (String(city_name).length === 0){ // ensimmäisenä katsotaan onko käyttäjän syöte tyhjä, ennen kuin edes tehdään pyyntöä serveriltä
-        console.log("Tyhjä")
+        return;
     }
 
     else{ // ...ei ollut tyhjä
@@ -45,10 +45,7 @@ function searchWeather(){
 
                 // "tuloksia ei löytynyt" kohta piiloon
                 document.querySelector("#results_not_found_container").style.display = "none";
-
             }
-
         }
-
     }
 }
