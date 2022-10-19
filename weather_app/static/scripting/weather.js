@@ -12,7 +12,7 @@ function searchWeather(){
 
         res.send(); // laitetaan pyyntö serverille
 
-        res.onload = () => { // pyyntö tuli vastaan, tehdään seuraavaa...
+        res.onload = () => { // pyyntö sai vastauksen, tehdään seuraavaa...
             const received_response = res.responseText; // serveriltä saatu vastaus
 
             if (!isNaN(received_response)){ // tuliko serveriltä virhe koodia?
@@ -26,6 +26,19 @@ function searchWeather(){
                 // serveri palauttaa noudetun sää-datan json-muodossa,
                 // joka sitten muunnetaan listaksi
                 let weather_data = JSON.parse(received_response);
+
+                const weather_color = weather_data.slice(-1); // datasta saatu sää tyyppin väri (listan viimeinen index)
+
+                document.querySelector("#weather_root").style.background = `linear-gradient(${weather_color})`; // likuväri tausta
+
+                // weather-widget kehyksen css tyylittely
+                let widget_container = document.querySelector("#weather_summary_field_container").style;
+                widget_container.border = "solid transparent";
+                widget_container.borderImage = `linear-gradient(145deg, ${weather_color})`; // kehyksen liukuväri
+                widget_container.borderImageSlice = "1";
+
+                // hakukentän kehys
+                // document.querySelector("#weather_search_root input[type='text']").style = `3px solid (${weather_color[0][1]})`; // värit on tuplena, joten ne on yksilöitävä (tässä käytetään jälkimmäistä väriä)
 
                 // weather.html id nimiä
                 const IDs = ["city_name", "weather_img", "current_temperature", "current_weather_name", "current_wind", "current_humidity"];

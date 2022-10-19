@@ -12,7 +12,7 @@ def weather_page():
     return render_template("weather.html")
 
 @app.route("/weather/<string:city_name>", methods=["POST"])
-def process_weather(city_name): # js:sstä saatu kaupungin nimi
+def process_weather(city_name): # js:stä saatu kaupungin nimi
 
     if str(city_name).isnumeric(): # client voi antaa numeron, jota ei voida käsitellä, 
         return "400"               # joten palautetaan heti bad request 400
