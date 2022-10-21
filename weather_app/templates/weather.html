@@ -11,16 +11,16 @@
 <div id="weather_root">
 
     <div id="widget_root">
-
+    <img id="weather_bg_img" src="{{ url_for('static', filename='img/wth/bg/placeholder.png') }}">
     <!-- weather_summary_field on primary weather-widgetti -->
     <div id="weather_summary_field_container">
 
             <!-- yläosa (kaupungin nimi, hakukenttä) -->
             <div id="weather_upper_part_container">
-                <h2 id="city_name">&nbsp;</h2>
+                <span id="city_name">&nbsp;</span>
                 <span id="weather_search_root">
                     <input id="weather_search_field" type="text" placeholder="Hae kaupunkia...">
-                    <button id="search_weather_button" onclick="searchWeather()">Search</button>
+                    <img id="search_weather_button" onclick="searchWeather()" src="{{ url_for('static', filename='img/search_icon.png') }}">
                 </span>
             </div>
 
@@ -28,8 +28,8 @@
             <div id="weather_middle_part_container">
                 <img id="weather_img" alt="placeholder">
                 <div id="weather_details">
-                    <h1 id="current_temperature">&nbsp;</h1>
-                    <h2 id="current_weather_name">&nbsp;</h2>
+                    <span id="current_temperature">&nbsp;</span>
+                    <span id="current_weather_name">&nbsp;</span>
                 </div>
             </div>
 

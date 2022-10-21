@@ -16,9 +16,19 @@ body{
     justify-content: center;
 }
 
-#weather_summary_field_container{
+#widget_root{
+    margin-top: 5%;
+    position: relative;
+    height: 340px;
+}
 
-    margin-top: 30%;
+#weather_summary_field_container{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: inherit;
+
+
     color:whitesmoke;
 
     /* kehyksen liukuväri */
@@ -28,24 +38,76 @@ body{
 }
 
 #city_name{
-    display: inline;
+    font-size: 50px;
+    position: absolute;
+    top: 25px;
+    left: 50px;
+}
+
+#weather_search_root{
+    position: absolute;
+    top: 25px;
+    right: 50px;
+}
+
+#search_weather_button{
+    position: absolute;
+    z-index: 2;
+    transform: translate(-70px, 10px);
+}
+#search_weather_button:hover{
+    opacity: 0.5;
+    cursor: pointer;
 }
 
 #weather_search_root input[type=text]{
     /* weather-hakukenttä */
+
     border-radius: 30px;
-    height: 30px;
+    height: 45px;
+    width: 450px;
     border: 3px solid #51b5e8;
     background-color: transparent;
     color: whitesmoke;
     font-size: large;
+    padding-left: 10px;
 }
 
 #weather_search_root ::placeholder{
     /* hakukentän placeholder teksti */
     color: whitesmoke;
     font-size: large;
-    padding-left: 10px;
+}
+
+#weather_middle_part_container{
+    position: absolute;
+    top: 80px;
+    left: 60px;
+}
+
+#weather_img{
+    padding-bottom: 10px;
+}
+
+#weather_details{
+    padding-left: 50px;
+}
+
+#current_temperature{
+    font-size: 90px;
+}
+
+#current_weather_name{
+    font-size: 40px;
+    display: block;
+}
+
+#weather_bottom_part_container{
+    position: absolute;
+    left: 30px;
+    bottom: 20px;
+
+    font-size: 30px;
 }
 
 #weather_details{
