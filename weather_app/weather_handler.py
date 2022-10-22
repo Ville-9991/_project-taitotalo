@@ -45,18 +45,18 @@ class Weather:
             name = fetched_data["name"] # koska data on dict, itemit on haettava key:n mukaan 
             icon = fetched_data["weather"][0]["icon"] # noudetussa dictissiä on myös joukossa lista, joka on huomioitava erikseen 0:nnella indexillä
             temperature = round(fetched_data["main"]["temp"]) # api antaa lukuja desimaaleina, halutaan näyttää ne mieluiten kokonaislukuina
+            main_waether_type = fetched_data["weather"][0]["main"]
             description = fetched_data["weather"][0]["description"]
             wind_speed = fetched_data["wind"]["speed"]
             humidity = fetched_data["main"]["humidity"]
 
-            img_source = f"../static/img/wth/{icon}.png"
+            img_source = f"../static/img/wth/{icon}.png" # sään pikkukuvake
+            bg_img_source = f"../static/img/wth/bg/{main_waether_type}_{icon}.png" # sään taustakuva datasta saadun "main" ja "icon" arvojen perusteella
 
             def getColorBasedOnWeather(): # funktio joka noutaa datasta saadun sää tyypin (main) ja palauttaa sen mukaan määritetyn värin hexadesimaali muodossa listana
                 # myöhemmin käytettävään tupleen, joka sitten lopuksi käytetään javascriptissä
 
-                main_waether_type = fetched_data["weather"][0]["main"]
-
-                # kaikki mahdolliset säätyypit, mitä openweathermap.org voi antaa
+                # kaikki mahdolliset säätyypit, mitä openweathermap.org voi antaa: https://openweathermap.org/weather-conditions
                 # possible_weather_types = ("Thunderstorm", "Drizzle", "Rain", "Snow", "Mist", "Smoke", "Haze", "Dust", "Fog", "Sand", "Ash", "Squall", "Tornado", "Clear", "Clouds")
 
                 if main_waether_type == "Thunderstorm": # Thunderstorm
@@ -119,6 +119,6 @@ class Weather:
                     colors = ("#27367d", "#4491b8")
                     return colors
             
-            required_data = (name, img_source, temperature, description, wind_speed, humidity, getColorBasedOnWeather())
+            required_data = (name, img_source, bg_img_source, temperature, description, wind_speed, humidity, getColorBasedOnWeather())
 
             return json.dumps(required_data)

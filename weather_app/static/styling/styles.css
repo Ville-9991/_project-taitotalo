@@ -22,6 +22,10 @@ body{
     height: 340px;
 }
 
+#weather_bg_img{
+    opacity: 0.7;
+}
+
 #weather_summary_field_container{
     position: absolute;
     top: 0;

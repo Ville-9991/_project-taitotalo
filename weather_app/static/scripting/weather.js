@@ -41,19 +41,22 @@ function searchWeather(){
                 // document.querySelector("#weather_search_root input[type='text']").style = `3px solid (${weather_color[0][1]})`; // värit on tuplena, joten ne on yksilöitävä (tässä käytetään jälkimmäistä väriä)
 
                 // weather.html id nimiä
-                const IDs = ["city_name", "weather_img", "current_temperature", "current_weather_name", "current_wind", "current_humidity"];
-                let index = 0;
+                const IDs = ["city_name", "weather_img", "weather_bg_img", "current_temperature", "current_weather_name", "current_wind", "current_humidity"];
+                let data_index = 0; // index, jolla tullaan viitataan weather_data:n alkioita
                 for (let id_name of IDs){ // noutaa tagin id:n ja korvaa html -tagien arvot weather_datan mukaan
 
-                    document.querySelector("#"+id_name).textContent = weather_data[index];
+                    document.querySelector("#"+id_name).textContent = weather_data[data_index];
 
                     if (id_name == "weather_img"){ // kuvakkeen kohdalla noudetaan datan mukana tulleen lähteen mukainen kuvake
-                        document.querySelector("#"+id_name).src = weather_data[index];
+                        document.querySelector("#"+id_name).src = weather_data[data_index];
+                    }
+                    else if (id_name == "weather_bg_img"){ // widgeting taustakuvalle tehdään sama homma
+                        document.querySelector("#"+id_name).src = weather_data[data_index]; // (alkiossa on taustakuvalle eri lähdepolku kuin pikkukuvalle)
                     }
                     else if (id_name == "current_temperature"){
-                        document.querySelector("#"+id_name).textContent = weather_data[index] + " °C";
+                        document.querySelector("#"+id_name).textContent = weather_data[data_index] + " °C";
                     }
-                    index++;
+                    data_index++;
                 }
 
                 // "tuloksia ei löytynyt" kohta piiloon
@@ -62,3 +65,18 @@ function searchWeather(){
         }
     }
 }
+
+document.addEventListener("DOMContentLoaded", (event) => {
+    searchWeather();
+
+    img = document.querySelector("#weather_img").src;
+    
+    if (img.length === 0){
+        document.body.style.visibility = "visible";
+    }
+
+    else{
+        document.body.style.visibility = "hidden";
+    }
+
+});
