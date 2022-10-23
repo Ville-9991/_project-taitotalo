@@ -1,5 +1,5 @@
-function searchWeather(){
-    let city_name = document.querySelector("#weather_search_field").value; // käyttäjän syöttämä kaupungin nimi
+function searchWeather(city_name){
+    city_name = document.querySelector("#weather_search_field").value; // käyttäjän syöttämä kaupungin nimi
 
     if (String(city_name).length === 0){ // ensimmäisenä katsotaan onko käyttäjän syöte tyhjä, ennen kuin edes tehdään pyyntöä serveriltä
         return;
@@ -42,7 +42,7 @@ function searchWeather(){
 
                 // weather.html id nimiä
                 const IDs = ["city_name", "weather_img", "weather_bg_img", "current_temperature", "current_weather_name", "current_wind", "current_humidity"];
-                let data_index = 0; // index, jolla tullaan viitataan weather_data:n alkioita
+                let data_index = 0; // index, jolla tullaan viitataamaan weather_data:n alkioita
                 for (let id_name of IDs){ // noutaa tagin id:n ja korvaa html -tagien arvot weather_datan mukaan
 
                     document.querySelector("#"+id_name).textContent = weather_data[data_index];
@@ -66,17 +66,13 @@ function searchWeather(){
     }
 }
 
-document.addEventListener("DOMContentLoaded", (event) => {
-    searchWeather();
+const load_default_city = document.addEventListener("DOMContentLoaded", () => { // kun DOM on latautunut
+    let default_city = document.querySelector("#weather_search_field").value = "Suomi"; // annetaan oletus sijainniksi "Suomi" (TODO koita saada käyttäjän sijainit...)
+    searchWeather(default_city);
+});
 
-    img = document.querySelector("#weather_img").src;
-    
-    if (img.length === 0){
-        document.body.style.visibility = "visible";
+const search_with_enter_key = document.addEventListener("keyup", () => {
+    if(event.key === "Enter"){ // kaupungin haku enterin paianlluksella
+        searchWeather();
     }
-
-    else{
-        document.body.style.visibility = "hidden";
-    }
-
 });
