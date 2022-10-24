@@ -25,7 +25,7 @@ function searchWeather(city_name){
 
                 // serveri palauttaa noudetun sää-datan json-muodossa,
                 // joka sitten muunnetaan listaksi
-                let weather_data = JSON.parse(received_response);
+                const weather_data = JSON.parse(received_response);
 
                 const weather_color = weather_data.slice(-1); // datasta saatu sää tyyppin väri (listan viimeinen index)
 

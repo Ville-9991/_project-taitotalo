@@ -20,7 +20,7 @@ class Weather:
     def fetchWeather(self):
 
         unit = "metric" # halutaan hakea mieluiten celsius-asteita, tyhjä tuo kelviniä
-        api_key = open("../key.txt", "r") # api-avain on pakollinen. avain haetaan erillisestä tiedostosta
+        api_key = open("..\_project\key.txt", "r") # api-avain on pakollinen. avain haetaan erillisestä tiedostosta
         URL = "https://api.openweathermap.org/data/2.5/weather"
         lang = "fi"
 
