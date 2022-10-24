@@ -5,6 +5,48 @@ body{
 
 /* 
 
+### main nav bar ###
+
+*/
+
+#nav_header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+#main_nav{
+    font-size: 17px;
+    background-color: #282A35;
+    color: #f1f1f1;
+    padding: 15px;
+    letter-spacing: 1px;
+}
+
+a{
+    text-decoration: none;
+    padding: inherit;
+}
+
+a:visited{
+    color: #f1f1f1;
+}
+
+a:hover{
+    color: #f1f1f1;
+    background-color: #000;
+}
+
+h1{
+    /* jostain syystä h1 (hello world teksti) ja header/nav menevät päällekkäin */
+    /* position absolute näyttää korjaavan asian... */
+    position: absolute;
+    top: 5%;
+}
+
+/* 
+
 ### weather-sivu ###
 
 */
