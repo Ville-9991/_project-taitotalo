@@ -20,18 +20,20 @@ class Weather:
     def fetchWeather(self):
 
         unit = "metric" # halutaan hakea mieluiten celsius-asteita, tyhjä tuo kelviniä
-        api_key = "44f84fe26e6724a76dc61a818494e3c5" # api-avain on pakollinen (TODO nouda erillisestä tiedostosta)
+        api_key = open("../key.txt", "r") # api-avain on pakollinen. avain haetaan erillisestä tiedostosta
         URL = "https://api.openweathermap.org/data/2.5/weather"
         lang = "fi"
 
         keys = { # param keys
             "q": self.city,
             "units": unit,
-            "appid": api_key,
+            "appid": api_key.read(),
             "lang": lang
         }
 
         res = requests.get(url=URL, params=keys) # yhdistää url:n ja parametrit yhdeksi url:ksi ja tekee pyynnön
+
+        api_key.close() # tiedosto on suljettava, kun ei ole käytölle enää tarvetta
 
         if res.status_code != 200:
             return res.status_code
