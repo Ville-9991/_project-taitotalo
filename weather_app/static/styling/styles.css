@@ -18,11 +18,17 @@ body{
 
 #widget_root{
     margin-top: 5%;
+
+    /* jotta kaikki tarvittavat elementit voi sijoittaa manuaalisesti kuvan päälle */
     position: relative;
+
+    /* leveyden widgetti ottaa taustakuvasta */
+    /* manuaalisesti (width: 960px) rikkoo widgetin leveyden(?) */
     height: 340px;
 }
 
 #weather_bg_img{
+    /* taustakuva on oltava hieman himmeämpi, jotta teksti voidaan erottaa */
     opacity: 0.7;
 }
 
