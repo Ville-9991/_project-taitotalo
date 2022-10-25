@@ -17,6 +17,11 @@ function searchWeather(city_name){
 
             if (!isNaN(received_response)){ // tuliko serveriltä virhe koodia?
 
+                if(received_response == 500){ // mikäli jokin meni pieleen API-pyynnön kanssa serveri puolella...
+                    document.querySelector("#results_not_found_container").textContent = "Jokin meni pieleen palvelua käytettäessä..."
+                    document.querySelector("#results_not_found_container").style.display = "flex";
+                }
+
                 // "tuloksia ei löytynyt" kohta näkyviin
                 document.querySelector("#results_not_found_container").style.display = "flex";
             }

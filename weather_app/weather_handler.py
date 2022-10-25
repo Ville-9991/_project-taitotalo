@@ -20,7 +20,13 @@ class Weather:
     def fetchWeather(self):
 
         unit = "metric" # halutaan hakea mieluiten celsius-asteita, tyhjä tuo kelviniä
-        api_key = open("..\_project\key.txt", "r") # api-avain on pakollinen. avain haetaan erillisestä tiedostosta
+
+        try:
+            api_key = open("..\key.txt", "r") # api-avain on pakollinen. avain haetaan erillisestä tiedostosta
+        except IOError:
+            print("API key file is missing or the file path is incorrect")
+            return "500"
+
         URL = "https://api.openweathermap.org/data/2.5/weather"
         lang = "fi"
 
@@ -31,7 +37,12 @@ class Weather:
             "lang": lang
         }
 
-        res = requests.get(url=URL, params=keys) # yhdistää url:n ja parametrit yhdeksi url:ksi ja tekee pyynnön
+        try:
+            res = requests.get(url=URL, params=keys) # yhdistää url:n ja parametrit yhdeksi url:ksi ja tekee pyynnön
+        except:
+            print("Something went wrong with making an API call")
+            api_key.close()
+            return "500"
 
         api_key.close() # tiedosto on suljettava, kun ei ole käytölle enää tarvetta
 
