@@ -22,6 +22,6 @@ Backend vaatii Python-ympäristön. Sen voi ladata tietokoneelle sivulta: https:
 - Kirjoita komentoriviin "env\scripts\active" (tai $env/scripts/activate jos muu kuin windows)
 - komentorivin alkuun pitäisi nyt tulla nälyviin "(env)". Tämä tarkoittaa että käytössä on virtuaali ympäristö.
 - Nyt kirjoitetaan "pip install -r requirements.txt". Tämän asentaa tarvittavat python-kirjastot ohjelman suorittamiseksi.
-- Kun tämä on tehty, kirjoitetaan vielä "python main.py".
+- Kun tämä on tehty, kirjoitetaan vielä "env\scripts\python main.py".
 - Nyt tietokone ajaa main.py nimisen tiedoston ja avaa portin, jossa sivua voi katsella
-- Viimeisenä avaa internetselain ja kirjoita hakukenttään localhost:5000 (tai paina komentorivissä näkyvää ip-osoitetta käyttämällä shift + hiiren oikea) 
+- Viimeisenä avaa internetselain ja kirjoita hakukenttään localhost:5000 (tai paina komentorivissä näkyvää ip-osoitetta käyttämällä ctrl + hiiren oikea) 
